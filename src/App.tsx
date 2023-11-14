@@ -11,6 +11,10 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
+      element: <Connexion />,
+    },
+    {
+      path: "/home/:login",
       element: <Home />,
     },
     {
@@ -19,7 +23,7 @@ function App() {
     }
     ,
     {
-      path: "/Connexion",
+      path: "/connexion",
       element: <Connexion />,
     }
   ]);
@@ -29,7 +33,7 @@ function App() {
       {/* <h1>Exercice 1 </h1>
       <RouterProvider router={router} /> */}
 
-      <h1>Exercice 2 </h1>
+      <h1>Exercice 2 & 3 </h1>
       <RouterProvider router={router} />
     </>
   )

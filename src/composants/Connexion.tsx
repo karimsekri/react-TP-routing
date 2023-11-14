@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Connexion = () => {
 
@@ -8,25 +8,34 @@ const Connexion = () => {
     const [password, setPassword] = useState("");
 
 
+
+
+
     const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(event.target.value)
+    }
+
+    const handleClickConnexion = () => {
+        if (login === 'admin' && password === 'admin') {
+            navigate(`/home/${login}`)
+        }
+        else {
+            setLogin("")
+            setPassword("")
+            alert("Login ou mot de passe incorrect")
+
+        }
     }
 
     return (
         <div>
             <label htmlFor="login" id="login">Login</label>
-            <input type="text" name="login" value={login}   onChange={(event) => setLogin(event.target.value)} />
+            <input type="text" name="login" value={login} onChange={(event) => setLogin(event.target.value)} />
 
             <label htmlFor="password" id="password">Password</label>
             <input type="password" name="password" value={password} onChange={handleChangePassword} />
 
-            <button onClick={() => {
-                if (login==='admin' && password === 'admin') {
-                    console.log("login : ", login)
-                    navigate("/")
-                }
-                
-            }}>Connexion</button>
+            <button onClick={handleClickConnexion}>Connexion</button>
         </div>
     )
 }
